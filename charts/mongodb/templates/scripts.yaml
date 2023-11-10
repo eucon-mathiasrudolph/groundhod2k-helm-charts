@@ -78,7 +78,7 @@ data:
     # returns - 0 when cluster exists otherwise errorcode
     detect_cluster() {
       local service=$1
-      $MONGOSHELL --host $service --eval "db.version()"
+      $MONGOSHELL --host $service --eval "rs.status()"
       result=$?
       if [ $result -eq 0 ]; then
         log "ReplicaSet cluster found"
